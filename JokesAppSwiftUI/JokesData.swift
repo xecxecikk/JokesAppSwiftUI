@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+struct Joke: Codable, Identifiable, Equatable {
+    let id: Int
+    let type: String
+    let joke: String?
+    let setup: String?
+    let delivery: String?
+
+    var originalText: String {
+        if type == "single" {
+            return joke ?? ""
+        } else {
+            return "\(setup ?? "")\n\(delivery ?? "")"
+        }
+    }
+}
